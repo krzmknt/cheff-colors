@@ -6,7 +6,7 @@
       "es2020"
     ],
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "esModuleInterop": true,
     "declaration": true,
     "strict": true,
@@ -27,7 +27,11 @@
       "./node_modules/@types"
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "bin/**/*.ts",
+    "lib/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "cdk.out"

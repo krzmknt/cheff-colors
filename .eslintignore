@@ -6,6 +6,6 @@ postcss.config.js
 
 # build dir
 build/
-bin/
+# bin/
 obj/
 out/

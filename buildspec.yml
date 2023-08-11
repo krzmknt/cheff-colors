@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - yarn install
+  build:
+    commands:
+      - yarn deploy $STAGE_NAME-lambda -c stageName=$STAGE_NAME -c commitHash=$CODEBUILD_RESOLVED_SOURCE_VERSION --require-approval never
