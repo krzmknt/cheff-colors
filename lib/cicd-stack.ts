@@ -83,6 +83,12 @@ export class LambdaCicdStack extends Stack {
                 `arn:aws:iam::${this.account}:role/cdk-*-role-${this.account}-${this.region}`,
               ],
             }),
+
+            new iam.PolicyStatement({
+              effect: iam.Effect.ALLOW,
+              actions: ['ecr:DescribeRepositories', 'ecr:PutImage'],
+              resources: [`arn:aws:ecr::${this.account}:*`],
+            }),
           ],
         }),
       },
