@@ -52,6 +52,12 @@ export class LambdaCicdStack extends Stack {
           statements: [
             new iam.PolicyStatement({
               effect: iam.Effect.ALLOW,
+              actions: ['ecr:DescribeRepositories', 'ecr:PutImage'],
+              resources: [`arn:aws:ecr:${this.region}:${this.account}:*`],
+            }),
+
+            new iam.PolicyStatement({
+              effect: iam.Effect.ALLOW,
               actions: ['cloudformation:*'],
               resources: [
                 `arn:aws:cloudformation:${this.region}:${this.account}:stack/*`,
@@ -82,12 +88,6 @@ export class LambdaCicdStack extends Stack {
               resources: [
                 `arn:aws:iam::${this.account}:role/cdk-*-role-${this.account}-${this.region}`,
               ],
-            }),
-
-            new iam.PolicyStatement({
-              effect: iam.Effect.ALLOW,
-              actions: ['ecr:DescribeRepositories', 'ecr:PutImage'],
-              resources: [`arn:aws:ecr::${this.account}:*`],
             }),
           ],
         }),
