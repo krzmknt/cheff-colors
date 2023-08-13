@@ -52,7 +52,17 @@ export class LambdaCicdStack extends Stack {
           statements: [
             new iam.PolicyStatement({
               effect: iam.Effect.ALLOW,
-              actions: ['ecr:DescribeRepositories', 'ecr:DescribeImages', 'ecr:PutImage'],
+              actions: [
+                'ecr:DescribeRepositories',
+                'ecr:DescribeImages',
+                'ecr:BatchGetImage',
+                'ecr:BatchCheckLayerAvailability',
+                'ecr:CompleteLayerUpload',
+                'ecr:GetDownloadUrlForLayer',
+                'ecr:InitiateLayerUpload',
+                'ecr:PutImage',
+                'ecr:UploadLayerPart',
+              ],
               resources: [`arn:aws:ecr:${this.region}:${this.account}:*`],
             }),
 
