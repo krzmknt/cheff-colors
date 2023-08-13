@@ -58,6 +58,12 @@ export class LambdaCicdStack extends Stack {
 
             new iam.PolicyStatement({
               effect: iam.Effect.ALLOW,
+              actions: ['ecr:GetAuthorizationToken'],
+              resources: [`*`],
+            }),
+
+            new iam.PolicyStatement({
+              effect: iam.Effect.ALLOW,
               actions: ['cloudformation:*'],
               resources: [
                 `arn:aws:cloudformation:${this.region}:${this.account}:stack/*`,
