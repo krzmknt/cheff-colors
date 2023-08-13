@@ -8,4 +8,4 @@ phases:
       - npm install
   build:
     commands:
-      - cdk deploy $STAGE_NAME-lambda -c stageName=$STAGE_NAME -c commitHash=$CODEBUILD_RESOLVED_SOURCE_VERSION --require-approval never
+      - npx cdk deploy ${PROJECT_NAME}-${STAGE_NAME}-api -c stageName=$STAGE_NAME -c commitHash=$CODEBUILD_RESOLVED_SOURCE_VERSION --require-approval never

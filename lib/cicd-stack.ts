@@ -107,6 +107,10 @@ export class LambdaCicdStack extends Stack {
               type: codeBuild.BuildEnvironmentVariableType.PLAINTEXT,
               value: stageName,
             },
+            PROJECT_NAME: {
+              type: codeBuild.BuildEnvironmentVariableType.PLAINTEXT,
+              value: projectName,
+            },
           },
         },
       },
