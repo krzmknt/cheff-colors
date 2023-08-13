@@ -42,14 +42,14 @@ const commitHash = app.node.tryGetContext('commitHash') as string | undefined
 
 console.log('projectName', projectName)
 console.log('stageName', stageName)
-new LambdaCicdStack(app, `${stageName}-${projectName}-cicd`, {
+new LambdaCicdStack(app, `${projectName}-${stageName}-cicd`, {
   ...env,
   githubOwnerName,
   githubRepositoryName,
   codestarConnectionArn,
 })
 
-new LambdaApiStack(app, `${stageName}-${projectName}-api`, {
+new LambdaApiStack(app, `${projectName}-${stageName}-api`, {
   ...env,
   commitHash,
 })

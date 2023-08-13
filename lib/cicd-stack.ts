@@ -95,7 +95,7 @@ export class LambdaCicdStack extends Stack {
       this,
       'CodeBuildProject',
       {
-        projectName: `${stageName}-${projectName}-project`,
+        projectName: `${projectName}-${stageName}-project`,
         buildSpec: codeBuild.BuildSpec.fromSourceFilename('./buildspec.yml'),
         role: codeBuildRole,
         environment: {
@@ -122,7 +122,7 @@ export class LambdaCicdStack extends Stack {
     })
 
     new codePipeline.Pipeline(this, 'Pipeline', {
-      pipelineName: `${stageName}-${projectName}-pipeline`,
+      pipelineName: `${projectName}-${stageName}-pipeline`,
       stages: [
         {
           stageName: 'source',

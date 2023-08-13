@@ -5,8 +5,9 @@ FROM node:16
 
 # あとは従来どおり
 WORKDIR /usr/src/app
-COPY package*.json ./
+COPY ../package*.json ./
 RUN npm ci --only=production
 COPY . .
 EXPOSE 3000/tcp
-CMD [ "node", "index.js" ]
+# CMD [ "node", "index.js" ]
+CMD [ "app.lambdaHandler"]

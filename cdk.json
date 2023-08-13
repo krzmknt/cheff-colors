@@ -19,7 +19,7 @@
     "projectName": "cheff-colors",
     "githubOwnerName": "krzmknt",
     "githubRepositoryName": "cheff-colors",
-    "codestarConnectionArn": "<codestarConnectionArn>",
+    "codestarConnectionArn": "arn:aws:codestar-connections:us-east-1:310682748446:connection/bb42b1b4-bc21-4dd6-8c0f-249d5872f522",
     "dev": {
       "githubBranchName": "dev"
     },
