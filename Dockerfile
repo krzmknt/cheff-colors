@@ -18,7 +18,7 @@ RUN npm run build
 FROM node:18.17.1-slim as runner
 
 # Install AWS Lambda Runtime Interface Client
-# COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.5.0 /lambda-adapter /opt/extensions/lambda-adapter
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.5.0 /lambda-adapter /opt/extensions/lambda-adapter
 
 WORKDIR /usr/src/app
 COPY package*.json .
