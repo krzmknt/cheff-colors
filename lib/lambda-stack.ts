@@ -20,7 +20,7 @@ export class LambdaApiStack extends Stack {
     const lambdaFunction = new lambda.DockerImageFunction(this, 'LambdaFunction', {
       functionName: `${stageName}-${projectName}-lambda`,
       description: commitHash ? `Commit Hash: ${commitHash}` : '',
-      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../src')),
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '../')),
       currentVersionOptions: {
         removalPolicy: stageName === 'dev' ? RemovalPolicy.DESTROY : RemovalPolicy.RETAIN,
       },
