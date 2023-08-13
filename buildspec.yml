@@ -4,9 +4,9 @@ phases:
   install:
     runtime-versions:
       nodejs: 18
-    commands:
-      - npm install
   build:
     commands:
-      - aws sts get-caller-identity
-      - npx cdk deploy ${PROJECT_NAME}-${STAGE_NAME}-api -c stageName=$STAGE_NAME -c commitHash=$CODEBUILD_RESOLVED_SOURCE_VERSION --require-approval never
+      - npx cdk deploy ${PROJECT_NAME}-${STAGE_NAME}-api
+        -c stageName=$STAGE_NAME
+        -c commitHash=$CODEBUILD_RESOLVED_SOURCE_VERSION
+        --require-approval never
