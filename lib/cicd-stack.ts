@@ -105,7 +105,7 @@ export class LambdaCicdStack extends Stack {
         buildSpec: codeBuild.BuildSpec.fromSourceFilename('./buildspec.yml'),
         role: codeBuildRole,
         environment: {
-          buildImage: codeBuild.LinuxBuildImage.STANDARD_5_0,
+          buildImage: codeBuild.LinuxBuildImage.STANDARD_7_0,
           computeType: codeBuild.ComputeType.SMALL,
           privileged: true,
           environmentVariables: {
