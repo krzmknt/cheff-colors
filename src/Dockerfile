@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 
 # この1行を追加するだけ！
 # COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.5.0 /lambda-adapter /opt/extensions/lambda-adapter
