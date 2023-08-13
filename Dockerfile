@@ -1,14 +1,31 @@
-# FROM node:18
-FROM amazon/aws-lambda-nodejs:18
+# =====================================
+# Build TypeScript source
+# -------------------------------------
+FROM node:18.17.1-slim as builder
+WORKDIR /usr/src/app
 
-# この1行を追加するだけ！
+COPY package*.json .
+RUN npm ci
+
+COPY tsconfig.json .
+COPY src src
+RUN npm run build
+
+
+# =====================================
+# Create production image
+# -------------------------------------
+FROM node:18.17.1-slim as runner
+
+# Install AWS Lambda Runtime Interface Client
 # COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.5.0 /lambda-adapter /opt/extensions/lambda-adapter
 
-# あとは従来どおり
 WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY ./src .
-# EXPOSE 3000/tcp
-# CMD [ "node", "index.js" ]
-CMD [ "app.lambdaHandler"]
+COPY package*.json .
+RUN npm ci --omit=dev
+COPY --from=builder /usr/src/app/dist dist
+
+ENV PORT 3000
+EXPOSE 3000/tcp
+
+CMD [ "node", "./dist/src/index.js" ]
